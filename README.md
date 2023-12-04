@@ -1,3 +1,17 @@
+# Pendente
+
+#### consolidação de informações nos arquivos baseCode
+- lexer: comentários migrados
+- interpreter: PENDENTE
+- main: PENDENTE
+- parser: PENDENTE
+- typechecker: PENDENTE
+- code.mylang: PENDENTE
+- example.mylang: PENDENTE
+
+
+
+
 # Complementação de funcionalidades de Interpretador do Lambda Cálculo
 
 Trabalho final do CCR Linguagens de Programação<br>
