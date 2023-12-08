@@ -26,6 +26,8 @@ import Lexer
     ">="        { TokenMaiorigual }  -- adicionado TF
     "<"         { TokenMenor }  -- adicionado TF
     "<="        { TokenMenorigual }  -- adicionado TF
+    "***"       { TokenFat } -- adicionado TF
+    "**"        { TokenPot } -- adicionado TF
     true        { TokenTrue }
     false       { TokenFalse }
     if          { TokenIf }
@@ -53,15 +55,17 @@ Exp         : num                           { Num $1 }
             | Exp '-' Exp                   { Sub $1 $3 }       -- adicionado [homeWork class 20231117]
             | Exp "&&" Exp                  { And $1 $3 }
             | Exp "||" Exp                  { Or $1 $3 }        -- adicionado [homeWork class 20231117]
-            | Exp "-&&" Exp                 { Nand $1 $3 }
-            | Exp "-||" Exp                 { Nor $1 $3 }
-            | Exp "-&|" Exp                 { Xor $1 $3 }
-            | Exp "==" Exp                  { Igual $1 $3 }
-            | Exp "/=" Exp                  { Diferente $1 $3 }
-            | Exp ">" Exp                   { Maior $1 $3 }
-            | Exp ">=" Exp                  { Maiorigual $1 $3 }
-            | Exp "<" Exp                   { Menor $1 $3 }
-            | Exp "<=" Exp                  { Menorigual $1 $3 }
+            | Exp "-&&" Exp                 { Nand $1 $3 }        -- adicionado TF
+            | Exp "-||" Exp                 { Nor $1 $3 }         -- adicionado TF
+            | Exp "-&|" Exp                 { Xor $1 $3 }         -- adicionado TF
+            | Exp "==" Exp                  { Igual $1 $3 }       -- adicionado TF
+            | Exp "/=" Exp                  { Diferente $1 $3 }   -- adicionado TF
+            | Exp ">" Exp                   { Maior $1 $3 }       -- adicionado TF
+            | Exp ">=" Exp                  { Maiorigual $1 $3 }  -- adicionado TF
+            | Exp "<" Exp                   { Menor $1 $3 }       -- adicionado TF
+            | Exp "<=" Exp                  { Menorigual $1 $3 }  -- adicionado TF
+            | "***" Exp                     { Fat $2 }            -- adicionado TF
+            | Exp "**" Exp                  { Pot $1 $3 }         -- adicionado TF
             | if Exp then Exp else Exp      { If $2 $4 $6 }
             | var                           { Var $1 } -- referente ao cálculo lambda
             | '\\' var ':' Type "->" Exp    { Lam $2 $4 $6 } -- referente ao cálculo lambda

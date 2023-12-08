@@ -8,14 +8,15 @@ data Expr = BTrue
           | BFalse 
           | Num Int 
           | Add Expr Expr 
-          | Mul Expr Expr -- adicionado [homeWork class 20231117]
-          | Sub Expr Expr -- adicionado [homeWork class 20231117] 
-          | Pot Expr Expr -- adicionado TF
+          | Mul Expr Expr  
+          | Sub Expr Expr   
           | And Expr Expr 
-          | Or Expr Expr -- adicionado [homeWork class 20231117]
-          | Nand Expr Expr -- adicionado TF
-          | Nor Expr Expr -- adicionado TF
-          | Xor Expr Expr -- adicionado TF
+          | Or Expr Expr  
+          | Nand Expr Expr  
+          | Nor Expr Expr  
+          | Xor Expr Expr  
+          | Fat Expr  
+          | Pot Expr Expr  
           | Igual Expr Expr
           | Diferente Expr Expr
           | Maior Expr Expr
@@ -23,9 +24,9 @@ data Expr = BTrue
           | Menor Expr Expr
           | Menorigual Expr Expr
           | If Expr Expr Expr 
-          | Var String                  -- referente ao cálculo lambda
-          | Lam String Ty Expr          -- referente ao cálculo lambda
-          | App Expr Expr               -- referente ao cálculo lambda
+          | Var String                   
+          | Lam String Ty Expr           
+          | App Expr Expr                
           | Paren Expr
           | Let String Expr Expr 
           deriving Show
@@ -43,28 +44,29 @@ data Token = TokenTrue
            | TokenFalse 
            | TokenNum Int 
            | TokenAdd
-           | TokenMul -- adicionado [homeWork class 20231117]
-           | TokenSub -- adicionado [homeWork class 20231117]
-        --    | TokenPot -- adicionado TF [Abandonado, pois, "No instance for (Floating Int) arising from a use of ‘**’"]
+           | TokenMul  
+           | TokenSub  
            | TokenAnd
-           | TokenOr -- adicionado [homeWork class 20231117] 
-           | TokenNand -- adicionado TF
-           | TokenNor -- adicionado TF
-           | TokenXor -- adicionado TF
-           | TokenIgual  -- adicionado TF
-           | TokenDiferente  -- adicionado TF
-           | TokenMaior  -- adicionado TF
-           | TokenMaiorigual  -- adicionado TF
-           | TokenMenor  -- adicionado TF
-           | TokenMenorigual  -- adicionado TF
+           | TokenOr   
+           | TokenNand  
+           | TokenNor  
+           | TokenXor  
+           | TokenIgual   
+           | TokenDiferente   
+           | TokenMaior   
+           | TokenMaiorigual   
+           | TokenMenor   
+           | TokenMenorigual   
+           | TokenPot   
+           | TokenFat  
            | TokenIf 
            | TokenThen 
            | TokenElse
-           | TokenVar String    -- referente ao cálculo lambda
-           | TokenLam           -- referente ao cálculo lambda
-           | TokenArrow         -- referente ao cálculo lambda
-           | TokenLParen        -- referente ao cálculo lambda
-           | TokenRParen        -- referente ao cálculo lambda
+           | TokenVar String     
+           | TokenLam            
+           | TokenArrow          
+           | TokenLParen         
+           | TokenRParen         
            | TokenLet 
            | TokenEq 
            | TokenIn
@@ -102,21 +104,22 @@ lexSymbol :: String -> [Token]
 lexSymbol cs = case span isSymb cs of -- case indica que enquanto for símbolo, fica seguindo na string; antes de ir para o pattern matting aabaixo, o span le toda a sequencia contínua de caracteres que forem símbolo; seja esta sequencia de 1 ou de n símbolos; 
                  ("+", rest)  -> TokenAdd : lexer rest 
                  ("&&", rest) -> TokenAnd : lexer rest 
-                 ("*", rest) -> TokenMul : lexer rest -- adicionado [homeWork class 20231117]
-                 ("-", rest) -> TokenSub : lexer rest -- adicionado [homeWork class 20231117]
-                --  ("**", rest) -> TokenPot : lexer rest-- adicionado TF [Abandonado, pois, "No instance for (Floating Int) arising from a use of ‘**’"]
-                 ("||", rest) -> TokenOr : lexer rest -- adicionado [homeWork class 20231117]
-                 ("-&&", rest) -> TokenNand : lexer rest -- adicionado TF
-                 ("-||", rest) -> TokenNor : lexer rest -- adicionado TF
-                 ("-&|", rest) -> TokenXor : lexer rest -- adicionado TF
-                 ("==", rest)  -> TokenIgual :lexer rest -- adicionado TF
-                 ("/=", rest)  -> TokenDiferente :lexer rest -- adicionado TF
-                 (">", rest)  -> TokenMaior :lexer rest -- adicionado TF
-                 (">=", rest)  -> TokenMaiorigual :lexer rest -- adicionado TF
-                 ("<", rest)  -> TokenMenor :lexer rest -- adicionado TF
-                 ("<=", rest)  -> TokenMenorigual :lexer rest -- adicionado TF
-                 ("\\", rest) -> TokenLam : lexer rest  -- referente ao cálculo lambda
-                 ("->", rest) -> TokenArrow : lexer rest -- referente ao cálculo lambda
+                 ("*", rest) -> TokenMul : lexer rest  
+                 ("-", rest) -> TokenSub : lexer rest  
+                 ("||", rest) -> TokenOr : lexer rest  
+                 ("-&&", rest) -> TokenNand : lexer rest  
+                 ("-||", rest) -> TokenNor : lexer rest  
+                 ("-&|", rest) -> TokenXor : lexer rest  
+                 ("==", rest)  -> TokenIgual :lexer rest  
+                 ("/=", rest)  -> TokenDiferente :lexer rest  
+                 (">", rest)  -> TokenMaior :lexer rest  
+                 (">=", rest)  -> TokenMaiorigual :lexer rest  
+                 ("<", rest)  -> TokenMenor :lexer rest  
+                 ("<=", rest)  -> TokenMenorigual : lexer rest  
+                 ("***", rest) -> TokenFat : lexer rest  
+                 ("**", rest) -> TokenPot : lexer rest  
+                 ("\\", rest) -> TokenLam : lexer rest   
+                 ("->", rest) -> TokenArrow : lexer rest  
                  ("=", rest)  -> TokenEq : lexer rest 
                  (":", rest)  -> TokenColon : lexer rest 
                  _ -> error "Lexical error: invalid symbol!"
