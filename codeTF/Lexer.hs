@@ -93,7 +93,7 @@ lexer (c:cs) | isSpace c = lexer cs
              | isAlpha c = lexKW (c:cs) -- serve para palavras-chave
 lexer _ = error "Lexical error!"
 
--- o span faz tipo um loop, no caso abaixo, ele lê enquanto for dígito; quando encontrar um elemento diferente de digit, coloca no rest
+-- o span faz espécia loop, no caso abaixo, ele lê enquanto for dígito; quando encontrar um elemento diferente de digit, coloca no rest
 lexNum :: String -> [Token]
 lexNum cs = case span isDigit cs of 
               (num, rest) -> TokenNum (read num) : lexer rest

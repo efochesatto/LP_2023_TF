@@ -18,7 +18,15 @@ A descrição completa da orientação para o desenvolvimento deste projeto pode
 
 ## Implementações realizadas
 
-[Descrição do que foi adicionado à linguagem]
+Considerando o desenvolvimento do código-base (feito durante as aulas do CCR) e o que foi implementado como parte do trabalho final, tem-se as seguintes funcionalidades: 
+
+| Grupo | Implementação em Aula | Implementação TF |
+| :---: | :---: | :---: | 
+| Operadores aritméticos | soma (+) | subtração (-) e multiplicação (*) |
+| Operadores lógicos | and (&&) | or (\|\|), nand (-&&), nor (-\|\|) e xor (-&\|) | 
+| Operadores relacionais |  | igual (==), diferente (/=), maior (>), menor (<), maior ou igual (>=) e menor ou igual (<=) | 
+| Outras funcionalidades | let, lambda |  | 
+| Funcionalidades especificas de outras linguagens (TF) |  | potência (\*\*), fatorial (\*\*\*) |
 
 
 como executar passando expressão e chamando o main
@@ -34,16 +42,7 @@ cat file.extFile | runghc Main.hs
 
 
 
-###### Operadores aritméticos
-nativo: +
-implementado -, *
 
-###### Operadores Lógicos
-nativo: And
-implementado Or, Nand, Nor, Xor
-
-###### Operadores Relacionais
-em vista: <, >, ==, !=, <=, =>
 
 
 ###### Tabela verdade de operações lógicas

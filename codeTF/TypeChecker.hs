@@ -87,8 +87,6 @@ typeof ctx (Let v e1 e2) = case typeof ctx e1 of
 
 
 
-
-
 typecheck :: Expr -> Expr 
 typecheck e = case typeof [] e of 
                 Just _ -> e 
