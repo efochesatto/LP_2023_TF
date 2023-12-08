@@ -34,4 +34,15 @@ cat file.extFile | runghc Main.hs
 
 
 
+###### Operadores aritméticos
+nativo: +
+iniciado: -, *
+em vista: **, /
 
+###### Operadores Lógicos
+nativo: And
+iniciado: Or
+em vista: Nand, Nor, Xor
+
+###### Operadores Relacionais
+em vista: <, >, ==, !=, <=, =>

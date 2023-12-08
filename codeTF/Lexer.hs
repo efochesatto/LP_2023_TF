@@ -8,10 +8,10 @@ data Expr = BTrue
           | BFalse 
           | Num Int 
           | Add Expr Expr 
-        --  | Mul Expr Expr -- adicionado [homeWork class 20231117]
-        --  | Sub Expr Expr -- adicionado [homeWork class 20231117] 
+          | Mul Expr Expr -- adicionado [homeWork class 20231117]
+          | Sub Expr Expr -- adicionado [homeWork class 20231117] 
           | And Expr Expr 
-        --  | Or Expr Expr -- adicionado [homeWork class 20231117]
+          | Or Expr Expr -- adicionado [homeWork class 20231117]
           | If Expr Expr Expr 
           | Var String                  -- referente ao cálculo lambda
           | Lam String Ty Expr          -- referente ao cálculo lambda
@@ -33,10 +33,10 @@ data Token = TokenTrue
            | TokenFalse 
            | TokenNum Int 
            | TokenAdd
-        --   | TokenMul -- adicionado [homeWork class 20231117]
-        --   | TokenSub -- adicionado [homeWork class 20231117]
+           | TokenMul -- adicionado [homeWork class 20231117]
+           | TokenSub -- adicionado [homeWork class 20231117]
            | TokenAnd
-        --   | TokenOr -- adicionado [homeWork class 20231117] 
+           | TokenOr -- adicionado [homeWork class 20231117] 
            | TokenIf 
            | TokenThen 
            | TokenElse
@@ -56,7 +56,7 @@ data Token = TokenTrue
 -- isSpace do Haskell, assim como isDigit e isAlpha também são
 -- elem indica se um determinado caracter existe em uma lista 
 isSymb :: Char -> Bool 
-isSymb c = c `elem` "+&\\->()=:"
+isSymb c = c `elem` "+&|-*\\->()=:"
 --isSymb c = c `elem` "+&|-*" -- adicionados símbolos |-* [homeWork class 20231117]
 -- tem que colocar \\ porque \ em haskell tbm é scape
 -- -> é o símbolo de TokenArrow e \ de TokenLamb
@@ -82,9 +82,9 @@ lexSymbol :: String -> [Token]
 lexSymbol cs = case span isSymb cs of -- case indica que enquanto for símbolo, fica seguindo na string; antes de ir para o pattern matting aabaixo, o span le toda a sequencia contínua de caracteres que forem símbolo; seja esta sequencia de 1 ou de n símbolos; 
                  ("+", rest)  -> TokenAdd : lexer rest 
                  ("&&", rest) -> TokenAnd : lexer rest 
-                -- ("*", rest) -> TokenMul : lexer rest -- adicionado [homeWork class 20231117]
-                -- ("-", rest) -> TokenSub : lexer rest -- adicionado [homeWork class 20231117]
-                -- ("||", rest) -> TokenOr : lexer rest -- adicionado [homeWork class 20231117]
+                 ("*", rest) -> TokenMul : lexer rest -- adicionado [homeWork class 20231117]
+                 ("-", rest) -> TokenSub : lexer rest -- adicionado [homeWork class 20231117]
+                 ("||", rest) -> TokenOr : lexer rest -- adicionado [homeWork class 20231117]
                  ("\\", rest) -> TokenLam : lexer rest  -- referente ao cálculo lambda
                  ("->", rest) -> TokenArrow : lexer rest -- referente ao cálculo lambda
                  ("=", rest)  -> TokenEq : lexer rest 
