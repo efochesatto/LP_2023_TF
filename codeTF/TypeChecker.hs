@@ -38,22 +38,22 @@ typeof ctx (Xor e1 e2) = case (typeof ctx e1, typeof ctx e2) of     -- adicionad
                        (Just TBool, Just TBool) -> Just TBool       -- adicionado TF
                        _                        -> Nothing          -- adicionado TF
 typeof ctx (Igual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
-                       (Just TNum, Just TNum) -> Just TNum 
+                       (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
 typeof ctx (Diferente e1 e2) = case (typeof ctx e1, typeof ctx e2) of
-                       (Just TNum, Just TNum) -> Just TNum 
+                       (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
 typeof ctx (Maior e1 e2) = case (typeof ctx e1, typeof ctx e2) of
-                       (Just TNum, Just TNum) -> Just TNum 
+                       (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
 typeof ctx (Maiorigual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
-                       (Just TNum, Just TNum) -> Just TNum 
+                       (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
 typeof ctx (Menor e1 e2) = case (typeof ctx e1, typeof ctx e2) of
-                       (Just TNum, Just TNum) -> Just TNum 
+                       (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
 typeof ctx (Menorigual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
-                       (Just TNum, Just TNum) -> Just TNum 
+                       (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
 typeof ctx (If e1 e2 e3) = case typeof ctx e1 of 
                          Just TBool -> case (typeof ctx e2, typeof ctx e3) of
