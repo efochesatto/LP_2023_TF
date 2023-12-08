@@ -1,5 +1,5 @@
 
-# Funcionalidades para Interpretador do Lambda Cálculo
+# Funcionalidades para Interpretador de LP
 
 Trabalho final do CCR Linguagens de Programação<br>
 Bacharelado em Ciência da Computação, 2023/02<br>
@@ -22,7 +22,7 @@ Considerando o desenvolvimento do código-base (feito durante as aulas do CCR) e
 | Operadores aritméticos | soma (+) | subtração (-) e multiplicação (*) |
 | Operadores lógicos | and (&&) | or (\|\|), nand (-&&), nor (-\|\|) e xor (-&\|) | 
 | Operadores relacionais |  | igual (==), diferente (/=), maior (>), menor (<), maior ou igual (>=) e menor ou igual (<=) | 
-| Outras funcionalidades | let, lambda, toda a estrutura para interpretação (léxica, sintática e semântica) | potência (\*\*), fatorial (\*\*\*) |
+| Outras funcionalidades | if, let, lambda, toda a estrutura para interpretação (léxica, sintática e semântica) | potência (\*\*), fatorial (\*\*\*) |
 <br><br>
 
 ## Informações de Apoio 
@@ -50,7 +50,7 @@ Como parte dos itens avaliativos do Trabalho Final, foi requisita a gravação d
 
 ## Conteúdos do repositório
 
-- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste trabalho final. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR de Linguagens da Programação. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em [./codeBase/code_in_class/class_20231201_filesProfesor](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/code_in_class/class_20231201_filesProfesor)) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em [./codeBase/code_consolidated](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/%20code_consolidated).
+- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste projeto. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em [./codeBase/code_in_class/class_20231201_filesProfesor](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/code_in_class/class_20231201_filesProfesor)) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em [./codeBase/code_consolidated](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/%20code_consolidated).
 - [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF): contém a versão do projeto desenvolvido para atendimento ao requisito avaliativo do CCR. 
 
 
