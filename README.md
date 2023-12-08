@@ -22,12 +22,12 @@ Considerando o desenvolvimento do código-base (feito durante as aulas do CCR) e
 | Operadores aritméticos | soma (+) | subtração (-) e multiplicação (*) |
 | Operadores lógicos | and (&&) | or (\|\|), nand (-&&), nor (-\|\|) e xor (-&\|) | 
 | Operadores relacionais |  | igual (==), diferente (/=), maior (>), menor (<), maior ou igual (>=) e menor ou igual (<=) | 
-| Outras funcionalidades | let, lambda | potência (\*\*), fatorial (\*\*\*) |
+| Outras funcionalidades | let, lambda, toda a estrutura para interpretação (léxica, sintática e semântica) | potência (\*\*), fatorial (\*\*\*) |
 <br><br>
 
 ## Informações de Apoio 
 
-###### Tabela verdade de operações lógicas
+#### Tabela verdade de operações lógicas
 | A | B | AND | NAND | OR | NOR | EXOR |
 | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | 0 | 0 | 0 | 1 | 0 | 1 | 0 |
@@ -35,7 +35,7 @@ Considerando o desenvolvimento do código-base (feito durante as aulas do CCR) e
 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 |
 
-###### Testes das funcionalidades implementadas
+#### Testes das funcionalidades implementadas
 
 Para testes referentes a este projeto, vale destacar: 
 
@@ -43,10 +43,15 @@ Para testes referentes a este projeto, vale destacar:
 - para executar um conteúdo passando a expressão pelo próprio terminal, deve-se adotar a seguinte sintaxe: echo "\[comando\]" | runghc file.hs. Para este projeto em específico, é um exemplo deste tipo de ação: echo "if true then 2 else 5" | runghc Main.hs;
 - para executar um conteúdo que esteja disponível em um arquivo, deve-se usar a seguinte sintaxe: cat file.ext | runghc file.hs. Para o caso deste projeto, um exemplo seria: cat file.mylang | runghc Main.hs.<br><br>
 
+#### Vídeo com demonstração das funcionalidades implementadas
+
+Como parte dos itens avaliativos do Trabalho Final, foi requisita a gravação de pequeno vídeo (até 5 minutos), demosntrando a implementação das funcionalidades do TF e exemplos de funcionamento. Este conteúdo pode ser acessado [aqui](). 
+
+
 ## Conteúdos do repositório
 
-- ./codeBase: contém os arquivos base para o desenvolvimento deste trabalho final. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR de Linguagens da Programação. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em ./codeBase/code_in_class/class_20231201_filesProfesor) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em ./codeBase/code_consolidated.
-- ./codeTF: contém a versão do projeto desenvolvido para atendimento ao requisito avaliativo do CCR. 
+- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste trabalho final. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR de Linguagens da Programação. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em [./codeBase/code_in_class/class_20231201_filesProfesor](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/code_in_class/class_20231201_filesProfesor)) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em [./codeBase/code_consolidated](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/%20code_consolidated).
+- [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF): contém a versão do projeto desenvolvido para atendimento ao requisito avaliativo do CCR. 
 
 
 
