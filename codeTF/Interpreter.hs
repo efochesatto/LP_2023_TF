@@ -29,7 +29,9 @@ subst x n (Diferente e1 e2) = Diferente (subst x n e1) (subst x n e2)
 subst x n (Maior e1 e2) = Maior (subst x n e1) (subst x n e2)  
 subst x n (Maiorigual e1 e2) = Maiorigual (subst x n e1) (subst x n e2)  
 subst x n (Menor e1 e2) = Menor (subst x n e1) (subst x n e2)  
-subst x n (Menorigual e1 e2) = Menorigual (subst x n e1) (subst x n e2)  
+subst x n (Menorigual e1 e2) = Menorigual (subst x n e1) (subst x n e2) 
+
+-- ################# quando é somente para 1
 subst x n (Fat e1) = Fat (subst x n e1) 
 subst x n (Pot e1 e2) = Pot (subst x n e1) (subst x n e2)  
 subst x n (If e1 e2 e3) = If (subst x n e1) (subst x n e2) (subst x n e3)
@@ -107,17 +109,15 @@ step (Menorigual (Num n1) (Num n2)) = if (n1 <= n2) then BTrue else BFalse
 step (Menorigual e1 (Num n)) = Menorigual (step e1) (Num n)                   
 step (Menorigual (Num n) e2) = Menorigual (Num n) (step e2)                   
 step (Menorigual e1 e2) = Menorigual (step e1) (step e2)
-
 step (Fat (Num n)) = Num (fatorial n)
 step (Fat e) = Fat (step e)
 step (Pot (Num n1) (Num n2)) = Num (potencia n1 n2)
 step (Pot e (Num n1)) = Pot (step e) (Num n1)
 step (Pot (Num n1) e) = Pot (Num n1) (step e)
 step (Pot e1 e2) = Pot (step e1) (step e2)
-
 step (If BFalse e1 e2) = e2 
 step (If BTrue e1 e2) = e1 
-step (If e e1 e2) = If (step e) e1 e2 
+step (If e e1 e2) = If (step e) e1 e2
 step (Paren e) = e
 step (App (Lam x t b) e2) | isValue e2 = subst x e2 b 
                           | otherwise = (App (Lam x t b) (step e2))

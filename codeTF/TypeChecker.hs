@@ -15,7 +15,7 @@ typeof ctx BFalse = Just TBool
 typeof ctx (Num _) = Just TNum 
 typeof ctx (Add e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
                        (Just TNum, Just TNum) -> Just TNum 
-                       _                      -> Nothing -- se um deles não for um TNum, retorna 'erro', vazio; no caso, Nothing
+                       _                      -> Nothing -- se um não for um TNum, retorna 'erro', vazio (Nothing)
 typeof ctx (Mul e1 e2) = case (typeof ctx e1, typeof ctx e2) of    
                        (Just TNum, Just TNum) -> Just TNum         
                        _                      -> Nothing           
@@ -55,6 +55,8 @@ typeof ctx (Menor e1 e2) = case (typeof ctx e1, typeof ctx e2) of
 typeof ctx (Menorigual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
                        (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
+
+-- ########## Verificar se é apens com um 
 typeof ctx (Fat e1) = case (typeof ctx e1) of 
                        (Just TNum)            -> Just TNum
                        _                      -> Nothing

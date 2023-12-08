@@ -7,6 +7,3 @@ import Interpreter
 
 main = getContents >>= print . eval . typecheck . parser . lexer
 -- pega tudo o que o usuaŕio digitou e joga pro lexer e depois imprime
-
--- main = getContents >>= print . eval . parser . lexer 
--- main = getContents >>= print . eval . typecheck . parser . lexer 
