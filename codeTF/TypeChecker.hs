@@ -16,18 +16,45 @@ typeof ctx (Num _) = Just TNum
 typeof ctx (Add e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
                        (Just TNum, Just TNum) -> Just TNum 
                        _                      -> Nothing -- se um deles não for um TNum, retorna 'erro', vazio; no caso, Nothing
-typeof ctx (Mul e1 e2) = case (typeof ctx e1, typeof ctx e2) of               -- adicionado [homeWork class 20231117]
+typeof ctx (Mul e1 e2) = case (typeof ctx e1, typeof ctx e2) of   -- adicionado [homeWork class 20231117]
                        (Just TNum, Just TNum) -> Just TNum        -- adicionado [homeWork class 20231117]
                        _                      -> Nothing          -- adicionado [homeWork class 20231117]
-typeof ctx (Sub e1 e2) = case (typeof ctx e1, typeof ctx e2) of               -- adicionado [homeWork class 20231117]
+typeof ctx (Sub e1 e2) = case (typeof ctx e1, typeof ctx e2) of   -- adicionado [homeWork class 20231117]
                        (Just TNum, Just TNum) -> Just TNum        -- adicionado [homeWork class 20231117]
                        _                      -> Nothing          -- adicionado [homeWork class 20231117]
 typeof ctx (And e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
                        (Just TBool, Just TBool) -> Just TBool 
                        _                        -> Nothing
-typeof ctx (Or e1 e2) = case (typeof ctx e1, typeof ctx e2) of                  -- adicionado [homeWork class 20231117]
+typeof ctx (Or e1 e2) = case (typeof ctx e1, typeof ctx e2) of      -- adicionado [homeWork class 20231117]
                        (Just TBool, Just TBool) -> Just TBool       -- adicionado [homeWork class 20231117]
                        _                        -> Nothing          -- adicionado [homeWork class 20231117]
+typeof ctx (Nand e1 e2) = case (typeof ctx e1, typeof ctx e2) of    -- adicionado TF
+                       (Just TBool, Just TBool) -> Just TBool       -- adicionado TF
+                       _                        -> Nothing          -- adicionado TF
+typeof ctx (Nor e1 e2) = case (typeof ctx e1, typeof ctx e2) of     -- adicionado TF
+                       (Just TBool, Just TBool) -> Just TBool       -- adicionado TF
+                       _                        -> Nothing          -- adicionado TF
+typeof ctx (Xor e1 e2) = case (typeof ctx e1, typeof ctx e2) of     -- adicionado TF
+                       (Just TBool, Just TBool) -> Just TBool       -- adicionado TF
+                       _                        -> Nothing          -- adicionado TF
+typeof ctx (Igual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum 
+                       _                      -> Nothing
+typeof ctx (Diferente e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum 
+                       _                      -> Nothing
+typeof ctx (Maior e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum 
+                       _                      -> Nothing
+typeof ctx (Maiorigual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum 
+                       _                      -> Nothing
+typeof ctx (Menor e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum 
+                       _                      -> Nothing
+typeof ctx (Menorigual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
+                       (Just TNum, Just TNum) -> Just TNum 
+                       _                      -> Nothing
 typeof ctx (If e1 e2 e3) = case typeof ctx e1 of 
                          Just TBool -> case (typeof ctx e2, typeof ctx e3) of
                                          (Just t1, Just t2)       -> if (t1 == t2) then -- no if, os dois resultados possíveis tem que ter o mesmo tipo; o if aqui faz isso, testa se os dois tem o mesmo tipo; 

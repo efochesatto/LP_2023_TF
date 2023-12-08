@@ -10,8 +10,18 @@ data Expr = BTrue
           | Add Expr Expr 
           | Mul Expr Expr -- adicionado [homeWork class 20231117]
           | Sub Expr Expr -- adicionado [homeWork class 20231117] 
+          | Pot Expr Expr -- adicionado TF
           | And Expr Expr 
           | Or Expr Expr -- adicionado [homeWork class 20231117]
+          | Nand Expr Expr -- adicionado TF
+          | Nor Expr Expr -- adicionado TF
+          | Xor Expr Expr -- adicionado TF
+          | Igual Expr Expr
+          | Diferente Expr Expr
+          | Maior Expr Expr
+          | Maiorigual Expr Expr
+          | Menor Expr Expr
+          | Menorigual Expr Expr
           | If Expr Expr Expr 
           | Var String                  -- referente ao cálculo lambda
           | Lam String Ty Expr          -- referente ao cálculo lambda
@@ -35,8 +45,18 @@ data Token = TokenTrue
            | TokenAdd
            | TokenMul -- adicionado [homeWork class 20231117]
            | TokenSub -- adicionado [homeWork class 20231117]
+        --    | TokenPot -- adicionado TF [Abandonado, pois, "No instance for (Floating Int) arising from a use of ‘**’"]
            | TokenAnd
            | TokenOr -- adicionado [homeWork class 20231117] 
+           | TokenNand -- adicionado TF
+           | TokenNor -- adicionado TF
+           | TokenXor -- adicionado TF
+           | TokenIgual  -- adicionado TF
+           | TokenDiferente  -- adicionado TF
+           | TokenMaior  -- adicionado TF
+           | TokenMaiorigual  -- adicionado TF
+           | TokenMenor  -- adicionado TF
+           | TokenMenorigual  -- adicionado TF
            | TokenIf 
            | TokenThen 
            | TokenElse
@@ -56,7 +76,7 @@ data Token = TokenTrue
 -- isSpace do Haskell, assim como isDigit e isAlpha também são
 -- elem indica se um determinado caracter existe em uma lista 
 isSymb :: Char -> Bool 
-isSymb c = c `elem` "+&|-*\\->()=:"
+isSymb c = c `elem` "+&|-*\\->()=:</"
 --isSymb c = c `elem` "+&|-*" -- adicionados símbolos |-* [homeWork class 20231117]
 -- tem que colocar \\ porque \ em haskell tbm é scape
 -- -> é o símbolo de TokenArrow e \ de TokenLamb
@@ -84,7 +104,17 @@ lexSymbol cs = case span isSymb cs of -- case indica que enquanto for símbolo, 
                  ("&&", rest) -> TokenAnd : lexer rest 
                  ("*", rest) -> TokenMul : lexer rest -- adicionado [homeWork class 20231117]
                  ("-", rest) -> TokenSub : lexer rest -- adicionado [homeWork class 20231117]
+                --  ("**", rest) -> TokenPot : lexer rest-- adicionado TF [Abandonado, pois, "No instance for (Floating Int) arising from a use of ‘**’"]
                  ("||", rest) -> TokenOr : lexer rest -- adicionado [homeWork class 20231117]
+                 ("-&&", rest) -> TokenNand : lexer rest -- adicionado TF
+                 ("-||", rest) -> TokenNor : lexer rest -- adicionado TF
+                 ("-&|", rest) -> TokenXor : lexer rest -- adicionado TF
+                 ("==", rest)  -> TokenIgual :lexer rest -- adicionado TF
+                 ("/=", rest)  -> TokenDiferente :lexer rest -- adicionado TF
+                 (">", rest)  -> TokenMaior :lexer rest -- adicionado TF
+                 (">=", rest)  -> TokenMaiorigual :lexer rest -- adicionado TF
+                 ("<", rest)  -> TokenMenor :lexer rest -- adicionado TF
+                 ("<=", rest)  -> TokenMenorigual :lexer rest -- adicionado TF
                  ("\\", rest) -> TokenLam : lexer rest  -- referente ao cálculo lambda
                  ("->", rest) -> TokenArrow : lexer rest -- referente ao cálculo lambda
                  ("=", rest)  -> TokenEq : lexer rest 

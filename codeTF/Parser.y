@@ -17,6 +17,15 @@ import Lexer
     '-'         { TokenSub } -- adicionado [homeWork class 20231117]
     "&&"        { TokenAnd }
     "||"        { TokenOr } -- adicionado [homeWork class 20231117]
+    "-&&"       { TokenNand } -- adicionado TF 
+    "-||"       { TokenNor } -- adicionado TF
+    "-&|"       { TokenXor } -- adicionado TF
+    "=="        { TokenIgual }  -- adicionado TF
+    "/="        { TokenDiferente }  -- adicionado TF
+    ">"         { TokenMaior }  -- adicionado TF
+    ">="        { TokenMaiorigual }  -- adicionado TF
+    "<"         { TokenMenor }  -- adicionado TF
+    "<="        { TokenMenorigual }  -- adicionado TF
     true        { TokenTrue }
     false       { TokenFalse }
     if          { TokenIf }
@@ -44,6 +53,15 @@ Exp         : num                           { Num $1 }
             | Exp '-' Exp                   { Sub $1 $3 }       -- adicionado [homeWork class 20231117]
             | Exp "&&" Exp                  { And $1 $3 }
             | Exp "||" Exp                  { Or $1 $3 }        -- adicionado [homeWork class 20231117]
+            | Exp "-&&" Exp                 { Nand $1 $3 }
+            | Exp "-||" Exp                 { Nor $1 $3 }
+            | Exp "-&|" Exp                 { Xor $1 $3 }
+            | Exp "==" Exp                  { Igual $1 $3 }
+            | Exp "/=" Exp                  { Diferente $1 $3 }
+            | Exp ">" Exp                   { Maior $1 $3 }
+            | Exp ">=" Exp                  { Maiorigual $1 $3 }
+            | Exp "<" Exp                   { Menor $1 $3 }
+            | Exp "<=" Exp                  { Menorigual $1 $3 }
             | if Exp then Exp else Exp      { If $2 $4 $6 }
             | var                           { Var $1 } -- referente ao cálculo lambda
             | '\\' var ':' Type "->" Exp    { Lam $2 $4 $6 } -- referente ao cálculo lambda

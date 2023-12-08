@@ -1,4 +1,4 @@
-if false || false then 
+if 3 == 4 then 
   20 - 10
 else 
   5 * 20
