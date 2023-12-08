@@ -11,10 +11,10 @@ import Lexer
 %token 
     num         { TokenNum $$ }
     '+'         { TokenAdd }
-    '*'         { TokenAdd }
-    '-'         { TokenAdd }
+    '*'         { TokenAdd } -- adicionado [homeWork class 20231117]
+    '-'         { TokenAdd } -- adicionado [homeWork class 20231117]
     "&&"        { TokenAnd }
-    "||"        { TokenAnd }
+    "||"        { TokenAnd } -- adicionado [homeWork class 20231117]
     true        { TokenTrue }
     false       { TokenFalse }
     if          { TokenIf }

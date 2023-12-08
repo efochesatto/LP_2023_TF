@@ -2,7 +2,6 @@ module Lexer where
  
 import Data.Char 
 
-
 -- Criando expressões que poderão ser aceitas 
 -- Representação da árvore de sintaxe abstrata (AST)
 data Expr = BTrue

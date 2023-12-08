@@ -1,16 +1,3 @@
-# Pendente
-
-#### consolidação de informações nos arquivos baseCode
-- lexer: comentários migrados
-- interpreter: PENDENTE
-- main: PENDENTE
-- parser: PENDENTE
-- typechecker: PENDENTE
-- code.mylang: PENDENTE
-- example.mylang: PENDENTE
-
-
-
 
 # Complementação de funcionalidades de Interpretador do Lambda Cálculo
 
@@ -33,9 +20,17 @@ A descrição completa da orientação para o desenvolvimento deste projeto pode
 
 [Descrição do que foi adicionado à linguagem]
 
+
+como executar passando expressão e chamando o main
+echo "if true then 2 else 5" | runghc Main.hs
+
+como executar lendo o arquivo para o main
+cat file.extFile | runghc Main.hs
+
+
 ## Conteúdos do repositório
 
-- ./baseCode: contém os arquivos base para o desenvolvimento deste trabalho final. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR de Linguagens da Programação. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em ./baseCode/LP_2023_dsv_in_class-main/class_20231201_filesProfesor) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em ./baseCode/consolidado.
+- ./codeBase: contém os arquivos base para o desenvolvimento deste trabalho final. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR de Linguagens da Programação. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em ./codeBase/code_in_class/class_20231201_filesProfesor) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em ./codeBase/code_consolidated.
 
 
 

@@ -1,30 +1,42 @@
-module TypeChecker where 
+module TypeChecker where
 
-import Lexer 
+import Lexer
 import Parser
 import Interpreter
 
 type Ctx = [(String,Ty)]
 
-typeof :: Ctx -> Expr -> Maybe Ty 
+-- Função para realizar a checagem dos tipos de uma expressão 
+-- usa maybe no Ty pq pode retornar alguma coisa ou não
+-- data Maybe q = Just a | Nothing
+typeof :: Ctx -> Expr -> Maybe Ty -- tipo criado no lexer para o tratamento de tipos
 typeof ctx BTrue = Just TBool 
 typeof ctx BFalse = Just TBool 
 typeof ctx (Num _) = Just TNum 
 typeof ctx (Add e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
                        (Just TNum, Just TNum) -> Just TNum 
-                       _                      -> Nothing
+                       _                      -> Nothing -- se um deles não for um TNum, retorna 'erro', vazio; no caso, Nothing
+-- typeof (Mul e1 e2) = case (typeof e1, typeof e2) of               -- adicionado [homeWork class 20231117]
+--                        (Just TNum, Just TNum) -> Just TNum        -- adicionado [homeWork class 20231117]
+--                        _                      -> Nothing          -- adicionado [homeWork class 20231117]
+-- typeof (Sub e1 e2) = case (typeof e1, typeof e2) of               -- adicionado [homeWork class 20231117]
+--                        (Just TNum, Just TNum) -> Just TNum        -- adicionado [homeWork class 20231117]
+--                        _                      -> Nothing          -- adicionado [homeWork class 20231117]
 typeof ctx (And e1 e2) = case (typeof ctx e1, typeof ctx e2) of 
                        (Just TBool, Just TBool) -> Just TBool 
                        _                        -> Nothing
+-- typeof (Or e1 e2) = case (typeof e1, typeof e2) of                  -- adicionado [homeWork class 20231117]
+--                        (Just TBool, Just TBool) -> Just TBool       -- adicionado [homeWork class 20231117]
+--                        _                        -> Nothing          -- adicionado [homeWork class 20231117]
 typeof ctx (If e1 e2 e3) = case typeof ctx e1 of 
                          Just TBool -> case (typeof ctx e2, typeof ctx e3) of
-                                         (Just t1, Just t2)       -> if (t1 == t2) then
+                                         (Just t1, Just t2)       -> if (t1 == t2) then -- no if, os dois resultados possíveis tem que ter o mesmo tipo; o if aqui faz isso, testa se os dois tem o mesmo tipo; 
                                                                        Just t1 
                                                                      else 
                                                                        Nothing
                                          _                        -> Nothing
                          _          -> Nothing
-typeof ctx (Paren e) = typeof ctx e
+typeof ctx (Paren e) = typeof ctx e -- o tipo de um (2) é o tipo de 2
 typeof ctx (Var x) = lookup x ctx 
 typeof ctx (Lam v t1 b) = let ctx' = (v, t1):ctx 
                             in case typeof ctx' b of 
@@ -39,6 +51,10 @@ typeof ctx (App e1 e2) = case (typeof ctx e1, typeof ctx e2) of
 typeof ctx (Let v e1 e2) = case typeof ctx e1 of 
                              Just t1 -> typeof ((v, t1):ctx) e2 
                              _       -> Nothing 
+
+
+
+
 
 typecheck :: Expr -> Expr 
 typecheck e = case typeof [] e of 
