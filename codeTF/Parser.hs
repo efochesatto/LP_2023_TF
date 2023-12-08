@@ -616,8 +616,8 @@ happyNewToken action sts stk (tk:tks) =
 	case tk of {
 	TokenNum happy_dollar_dollar -> cont 6;
 	TokenAdd -> cont 7;
-	TokenAdd -> cont 8;
-	TokenAdd -> cont 9;
+	TokenMul -> cont 8;
+	TokenSub -> cont 9;
 	TokenAnd -> cont 10;
 	TokenOr -> cont 11;
 	TokenTrue -> cont 12;

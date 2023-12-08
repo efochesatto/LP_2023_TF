@@ -1,4 +1,4 @@
-if true || false then 
-  2 + 5 + 7
+if false || false then 
+  20 - 10
 else 
-  5 + 20
+  5 * 20
