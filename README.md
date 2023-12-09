@@ -12,7 +12,7 @@ Adição de funcionalidades ao Interpretador do Lambda Cálculo desenvolvido em 
 
 ## Conteúdos do repositório
 
-- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste projeto. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR. Em ./codBase/codProfesor há a versão final do código base fornecida pelo professor; em ./codeBase/codeConsolidated há versão com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse;
+- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste projeto. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR. Em [./codBase/codProfesor](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/codeProfesor) há a versão final do código base fornecida pelo professor; em [./codeBase/codeConsolidated](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/codeConsolidated) há versão com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse;
 - [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF): contém a versão do projeto desenvolvido para atendimento ao requisito avaliativo do CCR. 
 
 Em relação ao [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF), a relação entre as fases do ciclo de interpretação e arquivos é a seguinte: 
