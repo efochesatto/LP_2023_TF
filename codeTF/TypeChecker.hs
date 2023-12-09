@@ -55,8 +55,6 @@ typeof ctx (Menor e1 e2) = case (typeof ctx e1, typeof ctx e2) of
 typeof ctx (Menorigual e1 e2) = case (typeof ctx e1, typeof ctx e2) of
                        (Just TNum, Just TNum) -> Just TBool 
                        _                      -> Nothing
-
--- ########## Verificar se é apens com um 
 typeof ctx (Fat e1) = case (typeof ctx e1) of 
                        (Just TNum)            -> Just TNum
                        _                      -> Nothing

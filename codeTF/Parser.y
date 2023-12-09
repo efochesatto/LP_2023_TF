@@ -67,10 +67,10 @@ Exp         : num                           { Num $1 }
             | "***" Exp                     { Fat $2 }             
             | Exp "**" Exp                  { Pot $1 $3 }          
             | if Exp then Exp else Exp      { If $2 $4 $6 }
-            | var                           { Var $1 } -- referente ao cálculo lambda
-            | '\\' var ':' Type "->" Exp    { Lam $2 $4 $6 } -- referente ao cálculo lambda
-            | Exp Exp                       { App $1 $2 } -- referente ao cálculo lambda
-            | '(' Exp ')'                   { Paren $2 } -- referente ao cálculo lambda -- da forma como está posto, tem que ter os dois, no caso, um para abrir e outro fechar; 
+            | var                           { Var $1 } 
+            | '\\' var ':' Type "->" Exp    { Lam $2 $4 $6 } 
+            | Exp Exp                       { App $1 $2 } 
+            | '(' Exp ')'                   { Paren $2 } -- tem que ter os dois, no caso, um para abrir e outro fechar; 
             | let var '=' Exp in Exp        { Let $2 $4 $6 }
 
 Type    : Bool                              { TBool }

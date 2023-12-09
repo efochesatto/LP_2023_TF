@@ -10,8 +10,9 @@ isValue (Num _) = True
 isValue (Lam _ _ _) = True
 isValue _ = False 
 
---  função de substituição
--- no primeiro caso abaixo x é a variável que quero substituir; o que irá substituir o x; primeiro caso é se eu tiver apenas uma variável v; quero substituir n por x, se v for do tipo x; 
+-- função de substituição
+-- no primeiro caso abaixo x é a variável que quero substituir; o que irá substituir o x; 
+-- primeiro caso é se eu tiver apenas uma variável v; quero substituir n por x, se v for do tipo x; 
 subst :: String -> Expr -> Expr -> Expr 
 subst x n (Var v) = if (x == v) then n else (Var v)
 subst x n (Lam v t b) = Lam v t (subst x n b)
@@ -30,8 +31,6 @@ subst x n (Maior e1 e2) = Maior (subst x n e1) (subst x n e2)
 subst x n (Maiorigual e1 e2) = Maiorigual (subst x n e1) (subst x n e2)  
 subst x n (Menor e1 e2) = Menor (subst x n e1) (subst x n e2)  
 subst x n (Menorigual e1 e2) = Menorigual (subst x n e1) (subst x n e2) 
-
--- ################# quando é somente para 1
 subst x n (Fat e1) = Fat (subst x n e1) 
 subst x n (Pot e1 e2) = Pot (subst x n e1) (subst x n e2)  
 subst x n (If e1 e2 e3) = If (subst x n e1) (subst x n e2) (subst x n e3)
