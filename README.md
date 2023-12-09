@@ -9,7 +9,6 @@
 ## Orientação 
 
 Adição de funcionalidades ao Interpretador do Lambda Cálculo desenvolvido em aula, considerando: (1) implementação e/ou complementação de operadores aritméticos, booleanos e relacionais, operador let, expressões do cálculo lambda, etc.; (2) implementação de uma funcionalidade existente em outra linguagem de programação que deverá ser adicionada à linguagem aqui em desenvolvimento. Para as duas situações, deve-se considear todas as etapas: léxica, sintática e semântica. A descrição completa da orientação para o desenvolvimento deste projeto pode ser acessada [aqui](https://github.com/efochesatto/LP_2023_TF/blob/main/TF_descricao.pdf). 
-<br><br><br><br>
 
 ## Implementações realizadas
 
@@ -21,7 +20,6 @@ Considerando o desenvolvimento do código-base (feito durante as aulas do CCR) e
 | Operadores lógicos | and (&&) | or (\|\|), nand (-&&), nor (-\|\|) e xor (-&\|) | 
 | Operadores relacionais |  | igual (==), diferente (/=), maior (>), menor (<), maior ou igual (>=) e menor ou igual (<=) | 
 | Outras funcionalidades | if, let, lambda, toda a estrutura para interpretação (léxica, sintática e semântica) | potência (\*\*), fatorial (\*\*\*) |
-<br><br><br><br>
 
 ## Informações de Apoio 
 
@@ -34,44 +32,38 @@ Em vista de apoiar a verificação das implementações das operações lógicas
 | 0 | 1 | 0 | 1 | 1 | 0 | 1 | 
 | 1 | 0 | 0 | 1 | 1 | 0 | 1 | 
 | 1 | 1 | 1 | 0 | 1 | 0 | 0 |
-<br><br>
 
 ### Testes das funcionalidades implementadas
 
 - para executar um conteúdo passando a expressão pelo próprio terminal, deve-se adotar a seguinte sintaxe: echo "\[comando\]" | runghc file.hs. Para este projeto em específico, é um exemplo deste tipo de ação: ***echo "if true then 2 else 5" | runghc Main.hs***;
 - para executar um conteúdo que esteja disponível em um arquivo, deve-se usar a seguinte sintaxe: cat file.ext | runghc file.hs. Para o caso deste projeto, um exemplo seria: ***cat file.mylang | runghc Main.hs***.<br><br>
 
-<br><br>
-
 ### Exemplos das funcionalidades implementadas
 
-- ao se passar expressões (sem o parser) para avaliação da função lexer (Lexer.hs), é possível obter a cadeia de tokens da mesma, cadeia esta que será objeto de avaliação das etapas seguintes. Os exemplos abaixo devem ser executados acionando a função lexer de Lexer.hs.
-<br>Exemplo: Xor (BTrue BFalse)
-<br>Sugestão de execução: lexer "(Xor (BTrue BFalse))"
-<br>Resultado esperado: [TokenLParen,TokenVar "Xor",TokenLParen,TokenVar "BTrue",TokenVar "BFalse",TokenRParen,TokenRParen]
+- ao se passar expressões (sem o parser) para avaliação da função lexer (Lexer.hs), é possível obter a cadeia de tokens da mesma, cadeia esta que será objeto de avaliação das etapas seguintes. Os exemplos abaixo devem ser executados acionando a função lexer de Lexer.hs.<br>
+***Exemplo:*** Xor (BTrue BFalse)<br>
+***Sugestão de execução:*** lexer "(Xor (BTrue BFalse))"<br>
+***Resultado esperado:*** [TokenLParen,TokenVar "Xor",TokenLParen,TokenVar "BTrue",TokenVar "BFalse",TokenRParen,TokenRParen]
 
-- verificar o processamento de operador relacionado (TNum -> TNum -> TBool) e nos casos de avaliação do if, são apresentadas operações que prescindem da avaliação por passos (conforme definido em Interpreter.hs, steps).
-<br>Exemplo: if (3 /= 4) then 10 - ( 3 + 1) else (***5) + (3**2)
-<br>Sugestão de execução: echo "if (3 /= 4) then 10 - ( 3 + 1) else (***5) + (3**2)" | runghc Main.hs
-<br>Resultado esperado: Num 6
+- verificar o processamento de operador relacionado (TNum -> TNum -> TBool) e nos casos de avaliação do if, são apresentadas operações que prescindem da avaliação por passos (conforme definido em Interpreter.hs, steps).<br>
+***Exemplo:*** if (3 /= 4) then 10 - ( 3 + 1) else (\*\*\*5) + (3\*\*2)<br>
+***Sugestão de execução:*** echo "if (3 /= 4) then 10 - ( 3 + 1) else (\*\*\*5) + (3\*\*2)" | runghc Main.hs<br>
+***Resultado esperado:*** Num 6
 
-- utilizando o interpretados Lambda construído em aula, pode-se também aplicar as funcionalidades adicionadas, como no exemplo acima. Note que x receberá o resultado da operação (***3) e, posteriormente, elevará o mesmo à potência 4. 
-<br>Exemplo: (\x : Num -> x ** 4) (***3)
-<br>Sugestão de execução: echo "(\x : Num -> x ** 4) (***3)" | runghc Main.hs
-<br>Resultado esperado: Num 1296
+- utilizando o interpretados Lambda construído em aula, pode-se também aplicar as funcionalidades adicionadas, como no exemplo acima. Note que x receberá o resultado da operação (***3) e, posteriormente, elevará o mesmo à potência 4.<br>
+***Exemplo:*** (\x : Num -> x \*\* 4) (\*\*\*3)<br>
+***Sugestão de execução:*** echo "(\x : Num -> x \*\* 4) (\*\*\*3)" | runghc Main.hs<br>
+***Resultado esperado:*** Num 1296
 
-- o caso abaixo segue a ideia do exemplo anterior, porém agora testando as funcionalidades de operações lógicas que foram implementadas, indicado à expressão lambda que se trata do tipo Bool
-<br>Exemplo: (\x : Bool -> x || false) (false -|| true)
-<br>Sugestão de execução: echo "(\x : Bool -> x || false) (false -|| true)" | runghc Main.hs
-<br>Resultado esperado: BFalse
-
-<br><br>
+- o caso abaixo segue a ideia do exemplo anterior, porém agora testando as funcionalidades de operações lógicas que foram implementadas, indicado à expressão lambda que se trata do tipo Bool<br>
+***Exemplo:*** (\x : Bool -> x || false) (false -|| true)<br>
+***Sugestão de execução:*** echo "(\x : Bool -> x || false) (false -|| true)" | runghc Main.hs<br>
+***Resultado esperado:*** BFalse
 
 ### Vídeo com demonstração das funcionalidades implementadas
 
 Como parte dos itens avaliativos do Trabalho Final, foi requisita a gravação de pequeno vídeo (até 5 minutos), demosntrando a implementação das funcionalidades do TF e exemplos de funcionamento. Este conteúdo pode ser acessado [aqui](https://youtu.be/AjsxZFf769A). 
 
-<br><br><br><br>
 ## Conteúdos do repositório
 
 - [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste projeto. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em [./codeBase/code_in_class/class_20231201_filesProfesor](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/code_in_class/class_20231201_filesProfesor)) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em [./codeBase/code_consolidated](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/%20code_consolidated).
@@ -85,7 +77,6 @@ Em relação ao [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/c
 
 - a **análise semântica**, por fim, compreende a avalição de tipos e expressões em vista de, concluído o ciclo de processamento dos comandos explicitados no código-fonte, devolver resultado ao usuário. [Typechecker.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/TypeChecker.hs) e [Interpreter.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Interpreter.hs) contém as operaçoes para este fim. No primeiro, o objetivo é, através da verificação dos tipos, identificar e filtrar casos indesejados; no segundo, faz-se o tratamento dos problemas (expressões) em si, tratando, passo a passo, cada situação até que se chegue a uma expressão terminal. 
 
-<br><br><br><br>
 ## Dependências
 
-Para este projeto utilizou-se a linguagem Haskell e para compilação a versão 8.8.4 do GHCi ([ver mais](https://www.haskell.org/ghc/)).
+Para este projeto utilizou-se a linguagem Haskell e para compilação a versão 8.8.4 do [GHCi](https://www.haskell.org/ghc/).
