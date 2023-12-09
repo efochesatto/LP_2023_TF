@@ -1,1 +1,20 @@
-(\x : Num -> x + 1) 2
+
+- ao se passar expressões (sem o parser) para avaliação da função lexer (Lexer.hs), é possível obter a cadeia de tokens da mesma, cadeia esta que será objeto de avaliação das etapas seguintes. Os exemplos abaixo devem ser executados acionando a função lexer de Lexer.hs.
+Exemplo: Xor (BTrue BFalse)
+Sugestão de execução: lexer "(Xor (BTrue BFalse))"
+Resultado esperado: [TokenLParen,TokenVar "Xor",TokenLParen,TokenVar "BTrue",TokenVar "BFalse",TokenRParen,TokenRParen]
+
+- verificar o processamento de operador relacionado (TNum -> TNum -> TBool) e nos casos de avaliação do if, são apresentadas operações que prescindem da avaliação por passos (conforme definido em Interpreter.hs, steps).
+Exemplo: if (3 /= 4) then 10 - ( 3 + 1) else (***5) + (3**2)
+Sugestão de execução: echo "if (3 /= 4) then 10 - ( 3 + 1) else (***5) + (3**2)" | runghc Main.hs
+Resultado esperado: Num 6
+
+- utilizando o interpretados Lambda construído em aula, pode-se também aplicar as funcionalidades adicionadas, como no exemplo acima. Note que x receberá o resultado da operação (***3) e, posteriormente, elevará o mesmo à potência 4. 
+Exemplo: (\x : Num -> x ** 4) (***3)
+Sugestão de execução: echo "(\x : Num -> x ** 4) (***3)" | runghc Main.hs
+Resultado esperado: Num 1296
+
+- o caso abaixo segue a ideia do exemplo anterior, porém agora testando as funcionalidades de operações lógicas que foram implementadas, indicado à expressão lambda que se trata do tipo Bool
+Exemplo: (\x : Bool -> x || false) (false -|| true)
+Sugestão de execução: echo "(\x : Bool -> x || false) (false -|| true)" | runghc Main.hs
+Resultado esperado: BFalse
