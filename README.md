@@ -45,7 +45,7 @@ Para testes referentes a este projeto, vale destacar:
 
 #### Vídeo com demonstração das funcionalidades implementadas
 
-Como parte dos itens avaliativos do Trabalho Final, foi requisita a gravação de pequeno vídeo (até 5 minutos), demosntrando a implementação das funcionalidades do TF e exemplos de funcionamento. Este conteúdo pode ser acessado [aqui](). 
+Como parte dos itens avaliativos do Trabalho Final, foi requisita a gravação de pequeno vídeo (até 5 minutos), demosntrando a implementação das funcionalidades do TF e exemplos de funcionamento. Este conteúdo pode ser acessado [aqui](https://youtu.be/AjsxZFf769A). 
 
 
 ## Conteúdos do repositório
