@@ -10,6 +10,19 @@
 
 Adição de funcionalidades ao Interpretador do Lambda Cálculo desenvolvido em aula, considerando: (1) implementação e/ou complementação de operadores aritméticos, booleanos e relacionais, operador let, expressões do cálculo lambda, etc.; (2) implementação de uma funcionalidade existente em outra linguagem de programação que deverá ser adicionada à linguagem aqui em desenvolvimento. Para as duas situações, deve-se considear todas as etapas: léxica, sintática e semântica. A descrição completa da orientação para o desenvolvimento deste projeto pode ser acessada [aqui](https://github.com/efochesatto/LP_2023_TF/blob/main/TF_descricao.pdf). 
 
+## Conteúdos do repositório
+
+- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste projeto. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR. Em ./codBase/codProfesor há a versão final do código base fornecida pelo professor; em ./codeBase/codeConsolidated há versão com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse;
+- [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF): contém a versão do projeto desenvolvido para atendimento ao requisito avaliativo do CCR. 
+
+Em relação ao [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF), a relação entre as fases do ciclo de interpretação e arquivos é a seguinte: 
+
+- a **análise léxica** apresenta a definição da sintaxe abstrata da linguagem, considerando tipos e expressões ("data expr" e "data Ty") que são suportados pela linguagem; esta estapa recebe um código fonte do usuário e, como resultado de seu processamento, entrega uma lista de tokens que passa a representar o código inicial e que será usada nas etapas seguintes para os demais procedimentos de análise e avaliação ([ver Lexer.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Lexer.hs));
+
+- a **análise sintática** recebe a lista de tokens gerados na análise léxica e vai monta a AST. Essa tarefa visa a verificação de se a sequência de tokens gerada com base no código fonte está adequada ao que a linguagem suporta. Ou seja, diferente da análise léxica (onde a verificação é de se as expressões do código fonte pertencem à linguagem), a análise sintática dá um passo na avaliação geral e verifica se a adequação da disposição dos elementos. Para este projeto, utiliza-se um gerador de AST do Haskell (happy), estando o mapemaneto de tokens e expressões declarado em [Parser.y](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Parser.y);
+
+- a **análise semântica**, por fim, compreende a avalição de tipos e expressões em vista de, concluído o ciclo de processamento dos comandos explicitados no código-fonte, devolver resultado ao usuário. [Typechecker.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/TypeChecker.hs) e [Interpreter.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Interpreter.hs) contém as operaçoes para este fim. No primeiro, o objetivo é, através da verificação dos tipos, identificar e filtrar casos indesejados; no segundo, faz-se o tratamento dos problemas (expressões) em si, tratando, passo a passo, cada situação até que se chegue a uma expressão terminal. 
+
 ## Implementações realizadas
 
 Considerando o desenvolvimento do código-base (feito durante as aulas do CCR) e o que foi implementado como parte do trabalho final, tem-se as seguintes funcionalidades: 
@@ -63,19 +76,6 @@ Em vista de apoiar a verificação das implementações das operações lógicas
 ### Vídeo com demonstração das funcionalidades implementadas
 
 Como parte dos itens avaliativos do Trabalho Final, foi requisita a gravação de pequeno vídeo (até 5 minutos), demosntrando a implementação das funcionalidades do TF e exemplos de funcionamento. Este conteúdo pode ser acessado [aqui](https://youtu.be/AjsxZFf769A). 
-
-## Conteúdos do repositório
-
-- [./codeBase](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase): contém os arquivos base para o desenvolvimento deste projeto. Os códigos base são produto de desenvolvimento conjunto (docente e discentes) em aulas do CCR. Note-se que, a verão utilizada como código base é um consolidado, de desenvolvimento próprio, que unificou a versão final do código base fornecida pelo professor (disponível em [./codeBase/code_in_class/class_20231201_filesProfesor](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/code_in_class/class_20231201_filesProfesor)) com comentários e complementações feitas ao longo do semestre, quer seja nos momentos de desenvolvimento conjunto em sala de aula, quer seja em momentos extraclasse. Esta unificação está disponível em [./codeBase/code_consolidated](https://github.com/efochesatto/LP_2023_TF/tree/main/codeBase/%20code_consolidated).
-- [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF): contém a versão do projeto desenvolvido para atendimento ao requisito avaliativo do CCR. 
-
-Em relação ao [./codeTF](https://github.com/efochesatto/LP_2023_TF/tree/main/codeTF), a relação entre as fases do ciclo de interpretação e arquivos é a seguinte: 
-
-- a **análise léxica** apresenta a definição da sintaxe abstrata da linguagem, considerando tipos e expressões ("data expr" e "data Ty") que são suportados pela linguagem; esta estapa recebe um código fonte do usuário e, como resultado de seu processamento, entrega uma lista de tokens que passa a representar o código inicial e que será usada nas etapas seguintes para os demais procedimentos de análise e avaliação ([ver Lexer.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Lexer.hs));
-
-- a **análise sintática** recebe a lista de tokens gerados na análise léxica e vai monta a AST. Essa tarefa visa a verificação de se a sequência de tokens gerada com base no código fonte está adequada ao que a linguagem suporta. Ou seja, diferente da análise léxica (onde a verificação é de se as expressões do código fonte pertencem à linguagem), a análise sintática dá um passo na avaliação geral e verifica se a adequação da disposição dos elementos. Para este projeto, utiliza-se um gerador de AST do Haskell (happy), estando o mapemaneto de tokens e expressões declarado em [Parser.y](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Parser.y);
-
-- a **análise semântica**, por fim, compreende a avalição de tipos e expressões em vista de, concluído o ciclo de processamento dos comandos explicitados no código-fonte, devolver resultado ao usuário. [Typechecker.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/TypeChecker.hs) e [Interpreter.hs](https://github.com/efochesatto/LP_2023_TF/blob/main/codeTF/Interpreter.hs) contém as operaçoes para este fim. No primeiro, o objetivo é, através da verificação dos tipos, identificar e filtrar casos indesejados; no segundo, faz-se o tratamento dos problemas (expressões) em si, tratando, passo a passo, cada situação até que se chegue a uma expressão terminal. 
 
 ## Dependências
 
